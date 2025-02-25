@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Liste des Critères</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        text-align: center;
+        padding: 50px;
+    }
+
+    .container {
+        background: white;
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #333;
+        font-size: 28px;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 16px;
+        color: #007bff;
+        transition: 0.3s;
+    }
+
+    a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+
+    td a {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        color: white;
+    }
+
+    .edit {
+        background-color: #28a745;
+    }
+
+    .edit:hover {
+        background-color: #218838;
+    }
+
+    .delete {
+        background-color: #dc3545;
+    }
+
+    .delete:hover {
+        background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Liste des Critères</h1>
+  <a class="btn" th:href="@{/criteres/new}">➕ Ajouter un nouveau critère</a>
+
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="critere : ${criteres}">
+      <td th:text="${critere.id}"></td>
+      <td th:text="${critere.nom}"></td>
+      <td>
+        <a class="edit" th:href="@{/criteres/edit/{id}(id=${critere.id})}">✏️ Modifier</a>
+        <a class="delete" th:href="@{/criteres/delete/{id}(id=${critere.id})}">🗑️ Supprimer</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
+
+
+
