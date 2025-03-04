@@ -37,7 +37,13 @@ public class EvaluationController {
     public String submitEvaluation(Evaluation evaluation) {
         evaluationService.createEvaluation(evaluation);
         return "redirect:/evaluations/succes";
+    }       
+    
+    @GetMapping("/succes")
+    public String getMethodName() {
+        return "succes";
     }
+    
 
     @GetMapping("/historique")
     public String listEvaluations(Model model) {
